@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduce Team 1</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Nanum+Myeongjo:wght@800&family=Noto+Sans+KR:wght@300&display=swap');
+        .title{
+
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 80px;
+        }
+        .subtitle {
+            font-family: 'Nanum Gothic Coding', monosapce;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .background {
+            border: solid;
+            border-color: #94928a;
+            border-width: 10px;
+        }
+        .container.alignleft {
+            background-color: #ede0ca;
+            display: flex;
+            padding-left: 10%;
+        }
+        .container.alignright {
+            background-color: #94928a;
+            display: flex;
+            flex-direction: row-reverse;
+            padding-right: 10%;
+        }
+        .header {
+            margin-top: 20px;
+            background-color: #ede0ca;
+            text-align: center;
+        }
+        .profile {
+            width: 350px;
+            height: 250px;
+            padding: 15px;
+        }
+        .alignleft.item.discription {
+            font-family: "Noto Sans KR", sans-serif;
+            padding-top: 12px;
+            color: #302f2c;
+            text-shadow: -1px 0 #94928a,
+	                     0 1px #94928a, 
+        }
+        .alignright.item.discription {
+            font-family: "Noto Sans KR", sans-serif;
+            padding-top: 12px;
+            text-align: right;
+            color: #ede0ca;
+            text-shadow: -1px 0 #ede0ca,
+	                     0 1px #ede0ca, 
+        }
+        .name {
+            font-size: 37px;
+            font-weight: 900;
+            text-decoration: underline;
+        }
+        ul {
+            padding-left: 30px;
+            font-family: "Noto Sans KR", sans-serif;
+            font-size: 22px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body bgcolor="#ede0ca">
+    <div class="background">
+        <div class="header">
+            <div class="title">초식동물</div><br>
+            <div class="subtitle">2명의 소와 2명의 토끼</div>
+        </div>
+        <div class="container alignleft">
+            <div class="item image">
+                <img class="profile" src="cow2.jpg">
+            </div>
+            <div class="item discription alignleft">
+                <div class="name">임다민</div>
+                <div class='bodytext'>
+                    <ul>
+                        <li>ERICA 영상디자인학과</li>
+                        <li>97년생 소 띠</li>
+                        <li>Personality - ENFP</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container alignright">
+            <div class="item image">
+                <img class="profile" src="rabbit.jpg">
+            </div>
+            <div class="item discription alignright">
+                <div class="name">박승민</div>
+                <div class='bodytext'>
+                    <ul>
+                        <li>ERICA 나노광전자공학과</li>
+                        <li>99년생 토끼 띠</li>
+                        <li>Personality - </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container alignleft">
+            <div class="item image">
+                <img class="profile" src ="cow.jpg">
+            </div>
+            <div class="item discription alignleft">
+                <div class="name">김민수</div>
+                <div class='bodytext'>
+                    <ul>
+                        <li>ERICA 해양융합공학과</li>
+                        <li>97년생 소 띠</li>
+                        <li>Personality - INFP</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container alignright">
+            <div class="item image">
+                <img class="profile" src="rabbit2.jpg">
+            </div>
+            <div class="item discription alignright">
+                <div class="name">차주희</div>
+                <div class='bodytext'>
+                    <ul>
+                        <li>ERICA 정보사회학과 / ICT융합학부 미디어테크놀로지</li>
+                        <li>99년생 토끼 띠</li>
+                        <li>Personality - ENFP</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class='header'>
+            <div class="subtitle">
+                <div>소개 영상</div>
+            </div>
+            <div class="media">
+                <iframe width="800px" height="500px" src="https://www.youtube.com/embed/yamU4m4Ty78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

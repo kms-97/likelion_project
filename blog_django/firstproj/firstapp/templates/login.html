@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+    Log in
+{% endblock %}
+    
+{% block body %}
+    <div     style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%)";>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" >로그인</button>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ac3e45beda16d0d13cf0185a65ab9c76&libraries=services"></script>
+    <link rel="stylesheet" href="../static/map.css">
+
+    <script>
+        const list_name = []
+        const list_lat = []
+        const list_lon = []
+        {% for cafe in cafes %}
+            list_name.push('{{ cafe.name }}');
+            list_lat.push('{{ cafe.latitude }}');
+            list_lon.push('{{ cafe.longitude }}');
+        {% endfor %}
+    </script>
+</head>
+<body>
+    <div id="map" style="width:50%;height:50%;position:relative;overflow:hidden;"></div>
+
+    <script type="text/javascript" src="../static/map.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail page</title>
+    <style>
+        body{text-align: center;}
+        .item{
+            border: 5px solid lightblue;
+            margin: 50px;
+            padding: 30px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🦁MEMBER DETAIL🦁</h1>
+    <div class = "container">
+        <div class = "item">
+	        <h2>{{name}}</h2>
+            <p>생년월일: {{birth}}</p>
+            <p >고향: {{birthlocation}}</p>
+            <p>거주지: {{live}}</p>
+            <p>전공: {{major}}</p>
+            <p>학번: {{number}}</p>
+            <p>애인유무: {{haslover}}</p>
+            <p>주량: {{alchol}}</p>
+            <p>좋아하는음식: {{food}}</p>
+            <p>목표: {{dream}}</p>
+        </div>
+        <div class="item">
+            <h2><a href="{% url 'update_page' id %}">Update</a></h2>  
+            <h2><a href="{% url 'delete' id %}">Delete</a></h2> 
+            <h2><a href="{% url 'main' %}">Back to main</a></h2>    
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update page</title>
+    <style>
+    body {
+        text-align: center;
+    }
+    .item{
+        border: 5px solid lightblue;
+        margin: 50px;
+        padding: 30px;
+    }
+    </style>
+</head>
+<body>
+    <h1>🦁Update Information🦁</h1>
+    <div class = "item">
+        <form action="{% url 'update' id %}" method="POST">
+            {% csrf_token %}
+            <p>이름 : <input type="text" name= "name" value="{{update_data.name}}"></p>
+            <p>생년월일 : <input type="date" name= "birth" value="{{update_data.birth|date:'Y-m-d'}}"></p>
+            <p>고향 : <input type="text" name= "birthlocation" value="{{update_data.birthlocation}}"></p>
+            <p>거주지 : <input type="text" name= "live" value="{{update_data.live}}"></p>
+            <p>학번 : <input type="text" name= "number" value="{{update_data.number}}"></p>
+            <p>전공 : <input type="text" name= "major" value="{{update_data.major}}"></p>
+            <p>좋아하는 음식 : <input type="text" name= "food" value="{{update_data.food}}"></p>
+            <p>주량 : <input type="text" name= "alchol" value="{{update_data.alchol}}"></p>
+            <p>애인유무 : <input type="text" name= "haslover" value="{{update_data.haslover}}"></p>
+            <p>꿈 : <textarea name= "dream" value="{{update_data.dream}}"></textarea></p>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{%url 'main' %}"><button>Cancel</button></a>
+    </div>
+</body>
+</html>

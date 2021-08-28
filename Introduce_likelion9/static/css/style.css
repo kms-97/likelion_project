@@ -1,0 +1,78 @@
+html {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+body {
+	margin: 0;
+}
+div, section, header, footer, p, h1, h2 {
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+	color: rgb(255, 187, 0);
+}
+ a:hover{
+	text-decoration: none;
+	color: rgb(121, 88, 0);
+ }
+
+img {
+	max-width: 40%;
+	height: auto;
+}
+
+/* 전체적인 콘텐츠의 폭 제한, 가운데 정렬 */
+.global-width{
+	/* 스마트폰 기기 고려 */
+	max-width: 620px; 
+	/* 가운데 정렬 */
+	margin : 0 auto ;
+	padding : 0 25px ;
+}
+
+.scroll-graphic{
+	/* 상단에 이미지가 위에 붙으면 고정되게 돕는 */
+	position: sticky; 
+	top : 0;
+	/* 이미지 자체가 높이를 갖고 있지 않기 때문에 */
+	height : 100vh;
+}
+
+/* 이미지들 */
+.graphic-item{
+	display: flex;
+	align-items: center; /* 세로방향 정렬 */
+	justify-content: center; /* 가로방향 정렬  */
+	position : absolute ;
+	left : 0;
+	top : 0;
+	width: 100%;
+	height: 100%;
+	/* 차례가 아닐 때 보이지 않음 */
+	opacity: 0;
+	/* 부드럽게 변형이 진행됨 */
+	transition: 0.5s; 
+}
+
+
+
+.visible{
+	opacity: 1;
+}
+
+.scene-img{
+	max-height: 100vh;
+}
+
+/* 텍스트들 */
+.scroll-text{
+	position: relative; /* 텍스트가 이미지 위로 올라오게 해줌 */
+}
+
+.step{
+	margin-bottom: 60vh; /* 내부여백 */
+	padding: 0.5rem 1rem; 
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0,0,0,0.3) 0 0 3px;
+}

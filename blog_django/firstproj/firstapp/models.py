@@ -1,0 +1,28 @@
+from django.db import models
+import datetime
+from django.utils import timezone
+
+
+class Blog(models.Model):
+    objects = models.Manager()
+    title = models.CharField(max_length=100)
+    writer = models.CharField(max_length=200)
+    pub_date = models.DateTimeField()
+    body=models.TextField()
+    image = models.ImageField(upload_to='images/',default="",blank=True)
+
+    def __str__(self):
+        return self.title
+
+class Comment(models.Model):
+    objects = models.Manager()
+    blog_id = models.ForeignKey(Blog, on_delete=models.CASCADE, null=True)
+    date = models.DateTimeField(auto_now_add = True)
+    user = models.TextField(max_length = 20)
+    content = models.TextField(max_length = 100)
+
+
+
+
+
+

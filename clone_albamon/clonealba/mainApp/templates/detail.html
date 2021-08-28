@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail page</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        html {
+            size: 10px;
+            text-align: center;
+            min-width: 60rem;
+        }
+        p {
+            font-weight: bold;
+        }
+        table {
+            width: 70%;
+            margin: auto;
+        }
+        td {
+            width: 50%;
+            height: 2.5rem;
+            font-weight: bold;
+        }
+        .container {
+            margin: auto;
+            border: 0.2rem solid;
+            width: 55rem;
+            margin-bottom: 2rem;
+            align-items : stretch;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            display: flex;
+        }
+        .container2 {
+            width: 55rem;
+            margin: auto;
+            display: flex;
+            align-items : stretch;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        .item {
+            margin: auto;
+            width: 55rem;
+        }
+        .category {
+            text-align: right;
+            padding-right: 1rem;
+            flex: 1 1 48%;
+        }
+        .content {
+            text-align: left;
+            padding-left: 1rem;
+            flex: 1 1 52%
+        }
+        .commentContainer {
+            flex-direction: column;
+            margin: auto;
+            border: 0.2rem solid;
+            width: 55rem;
+            margin-bottom: 2rem;
+            align-items : stretch;
+            flex-wrap: nowrap;
+            display: flex;
+            padding-top:1rem;
+            padding-bottom: 1rem;
+        }
+        .comment, .newCom{
+            display: flex;
+            flex-direction: row;
+            align-items : stretch;
+            margin: auto;
+            width: 50rem;
+        }
+        .writter {
+            flex: 1 1 30%;
+            margin: auto;
+        }
+        .body {
+            margin: auto;
+            flex: 1 1 50%;
+        }
+        .etc {
+            margin: auto;
+            flex: 1 1 20%;
+        }
+        .newCom {
+            margin: auto;
+        }
+        .newwritter {
+            flex: 1 1 30%;
+            margin-left: auto;
+        }
+        .newbody {
+            flex: 1 1 50%;
+        }
+        .button {
+            border: none;
+            background-color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>구인구직</h1>
+
+
+    <div class = "container">
+        <div class= "item">
+            <h2>{{ detail.company }}</h2>
+        </div>
+        {% if image.url != Null %}
+            <img style="margin: auto; max-width: 60%; height: auto; margin-bottom:3rem;" src="{{ image.url }}">
+        {% else %}
+        {% endif %}
+        <table>
+            <tr>
+                <td>장소</td>
+                <td>{{ detail.where }}</td>
+            </tr>
+            <tr>
+                <td>기간</td>
+                {% if detail.period != Null %}
+                    <td>{{ detail.period }}개월 이상</td>
+                {% else %}
+                    <td>협의</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td rowspan='2'>요일 및 시간</td>
+                <td>{{ detail.day }}</td>
+            </tr>
+            <tr>
+                {% if detail.time != '' %}
+                    <td>{{ detail.time }}</td>
+                {% else %}
+                    <td>협의</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>시급</td>
+                {% load humanize %}
+                {% if detail.pay != Null %}
+                    <td>{{ detail.pay|intcomma }}</td>
+                {% else %}
+                    <td>협의</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>상세</td>
+                <td style="white-space: pre;">{{ detail.detail }}</td>
+            </tr>
+            <tr>
+                <td>지원자 수</td>
+                <td>{{ detail.valunteer }}</td>
+            </tr>
+        </table>
+        <span style="text-align: right">
+            <a href="{% url 'update_page' id %}">수정하기</a>
+            <a href="{% url 'delete' id %}">삭제하기</a>
+         </span>
+    </div>
+
+    <div class='commentContainer'>
+        {% for i in comment %}
+        <div class='comment' style="margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: solid 0.1rem;">
+            <div class='writter'>
+                <span>{{i.writter}}</br></span>
+                <span>{{i.date|date:"m월 d일 G:i"}}</span>
+            </div>
+            <div class="body">
+                <div style="white-space: pre; text-align: left;">{{i.body}}</div>
+            </div>
+            <div class='etc'>
+                <a href="{% url 'deleteComment' id i.id %}">삭제하기</a>
+            </div>
+        </div>
+        {% endfor %}
+        <div  style="margin-top: 3rem; padding-top: 1rem; border-top: solid 0.1rem;">
+            <form  class="newCom" action="{% url 'newComment' id %}" method='POST'>
+                {% csrf_token %}
+                <div class='newwritter'>
+                    <input type='text' name='writter'>
+                </div>
+                <div class='newbody'>
+                    <textarea style="width: 100%" name='body'></textarea>
+                </div>
+                <div class='etc'>
+                    <button class="button" type="submit">등록하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <span><a href="{% url 'apply' id %}">지원하기</a></span>
+        {% if detail.valunteer > 0 %}
+            <span><a href="{% url 'cancel' id %}">지원취소</a></span>
+        {% else %}
+        {% endif %}
+        <span><a href="{% url 'main' %}">돌아가기</a></span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+}
+
+h1, h2 {
+    text-decoration: underline;
+}
+
+span {
+    color: aqua;
+}
+
+p {
+    font-weight: bold;
+    font-size: large;
+}
+
+div {
+    background-color: bisque;
+    color: darkgrey;
+    text-shadow: 2px 2px 3px white;
+    height: 50px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 50px;
+}
+
+.logo {
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+}

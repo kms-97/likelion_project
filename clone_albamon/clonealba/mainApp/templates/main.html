@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <style>
+        html {
+            size: 10px;
+            text-align: center;
+            min-width: 60rem;
+        }
+        p {
+            margin:0;
+        }
+        .container1 {
+            margin: auto;
+            border: 0.2rem solid;
+            width: 55rem;
+            margin-bottom: 2rem;
+            align-items : stretch;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            display: flex;
+        }
+        .item1 {
+            flex: 1 1 30%;
+            margin: auto;
+        }
+        .container2{
+            margin: auto;
+            align-items : stretch;
+            flex-wrap: wrap;
+            flex-direction: row;
+            display: flex;
+            flex: 1 1 70%;
+        }
+        .sub {
+            flex: 1 1 50%;
+            margin: auto;
+            padding-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>구인구직</h1>
+
+        {% for i in notice %}
+        <div style="cursor:pointer" onclick="location.href=`{% url 'detail' i.id %}`"  class = "container1">
+            <div class = "item1">
+                {% if i.image == '' %}
+                <h2>
+                    {{i.company}}
+                </h2>
+                {% else %}
+                    <img style="margin: auto; max-width: 60%; height: auto;" src="{{ i.image.url }}">
+                {% endif %}
+            </div>
+            <div class = "container2">
+                <div class = "sub">
+                    <h4>장소</h4>
+                    <p>{{i.where}}</p>
+                </div>
+                <div class = "sub">
+                    <h4>기간</h4>
+                    {% if i.period != Null %}
+                        <p>{{ i.period }}개월 이상</p>
+                    {% else %}
+                        <p>협의</p>
+                    {% endif %}
+                </div>
+                <div class = "sub">
+                    <h4>요일/시간</h4>
+                    <span>{{i.day}} / </span>
+                    {% if i.time != '' %}
+                    <span>{{ detail.time }}</span>
+                    {% else %}
+                    <span>협의</span>
+                    {% endif %}
+                </div>
+                <div class = "sub">
+                    <h4>시급</h4>
+                    {% load humanize %}
+                    {% if i.pay != Null %}
+                        <p>{{ i.pay|intcomma }}</p>
+                    {% else %}
+                        <p>협의</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    <div>
+        <p><a href="{% url 'registerPage' %}">등록하기</a></p>
+    </div>
+</body>
+</html>

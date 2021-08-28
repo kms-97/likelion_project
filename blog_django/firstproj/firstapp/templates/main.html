@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+    Blog Main Page
+{% endblock %}
+
+{% block body %}
+
+    <div class="container" style="display: flex; flex-flow: column nowrap; align-items: center;">
+        {% for i in posts %}
+
+            <div class="card" style="width: 50%; text-align: center; margin-bottom: 3rem">
+                <div class="card-body">
+                <h4 class="card-title">{{i.title}}</h4>
+                <h6 class="card-subtitle mb-2 text-muted">{{ i.writer }}</h6>
+                <p class="card-text" style=" white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{i.body}}</p>
+                <a href="{% url 'detail'  i.id %}" class="card-link">Detail</a>
+                </div>
+            </div>
+            
+
+        {% endfor %}
+    </div>
+    <div style="text-align: center; margin-bottom: 1rem">
+        {% if posts.has_previous %}
+            <a href="?page=1" style="text-decoration: none; color: black;"> << </a>
+            <a href="?page={{posts.previous_page_number}}" style="text-decoration: none; color: black;"> < </a>
+        {% endif %}
+            <span>
+                {{ posts.number }} / {{ posts.paginator.num_pages }}
+            </span>
+        {% if posts.has_next %}
+            <a href="?page={{posts.next_page_number}}" style="text-decoration: none; color: black;"> > </a>
+            <a href="?page={{ posts.paginator.num_pages }}" style="text-decoration: none; color: black;"> >> </a>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

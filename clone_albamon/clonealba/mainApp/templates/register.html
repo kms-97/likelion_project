@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+
+    <style>
+        html {
+            size: 10px;
+            text-align: center;
+            min-width: 60rem;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        .button {
+            border: none;
+            background-color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0;
+        }
+        .item {
+            margin: auto;
+            width: 55rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>구인구직</h1>
+
+    <div class = "container">
+        <span class = 'item'>
+            <h2>등록하기</h2>
+            <form enctype="multipart/form-data" action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                <p>상호 : <input type="text" name= "company"></p>
+                <p>장소 : <input type="text" name= "where"></p>
+                <p>기간 : <input type="number" name= "period" min='1' max='12'> 개월 (이상)</p>
+                <p>요일 : <input type="text" name= "day"></p>
+                <p>시간 : <input type="text" name= "time"></p>
+                <p>시급 : <input type="text" name= "pay">원</p>
+                <p>상세 : <textarea name= "detail"></textarea></p>
+                <p>사진 : <input type="file" name="image"></p>
+                <button class="button" type="submit">등록하기</button>
+                <a href="{%url 'main' %}">돌아가기</a>
+            </form>
+        </span>
+    </div>
+</body>
+</html>

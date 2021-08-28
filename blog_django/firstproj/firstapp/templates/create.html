@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+Create page
+{% endblock %}
+
+
+{% block body %}
+    <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        <p>제목 : <input type= "text" name = "title"></p>
+        <p>작성자 : <input type= "text" name = "writer" value="{{ user.username }}"></p>
+        <p>본문 : <textarea name="body" cols="30" rews="10"></textarea></p>
+        <p>사진 : <input type="file" name = "image"></p>
+        <button type="submit">작성</button>
+    </form>
+{% endblock %}
+  
