@@ -1,0 +1,53 @@
+.map-container {
+    width: 100vw;
+    height: 79vh;
+    display: flex;
+}
+
+#list-container{
+    position:relative;
+    float: right;
+    width: 19vw;
+    height: 100%;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+#list-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+#map {
+    display: block;
+    position: relative;
+    float: left;
+    width: 80vw;
+    height: 100%;
+}
+
+#placeList #pagination {
+    width: 100%
+}
+
+
+.sort-navbar {
+    width: 100vw;
+    border-bottom: 1px solid #707070;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 1vw;
+    padding-left: 1vw;
+}
+
+.sort-navbar > .button {
+    font-size: 15px;
+    margin: 10px 10px;
+    display: flex;
+}
+
+.sort-navbar > .button > button {
+    margin-left: 2px;
+}
+
+.search-bar {
+    width: 15vw;
+}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+    <head>
+        {% load static %}
+        {% block extrahead %}
+        <link rel="stylesheet" href="{% static 'css/search.css' %}">
+        {% endblock %}
+    </head>
+
+{% block content %}
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input class="search-bar" type="text" id="searchKeyword" autofocus onkeypress="if( event.keyCode == 13){startSearch(this.value)}">
+            <button class="search-bar-button" type="submit"></button>
+            
+            <div class="search-grid">
+                <button type="button" class="search-button" value="병원">#전체</button>
+                <button type="button" class="search-button" value="내과">#내과</button>
+                <button type="button" class="search-button" value="정형외과">#정형외과</button>
+                <button type="button" class="search-button" value="이비인후과">#감기</button>
+                <button type="button" class="search-button" value="치과">#치과</button>
+                <button type="button" class="search-button" value="산부인과">#산부인과</button>
+                <button type="button" class="search-button" value="비뇨기과">#비뇨기과</button>
+                <button type="button" class="search-button" value="이비인후과">#이비인후과</button>
+            </div>
+        </div>   
+    </div>
+    <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+{% endblock %}
